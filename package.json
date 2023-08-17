@@ -1,0 +1,25 @@
+{
+  "name": "blogappnodejs",
+  "version": "1.0.0",
+  "description": "Nodejs Projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aswintalk76/blogAppNodejs.git"
+  },
+  "keywords": [
+    "Nodejs",
+    "javascript",
+    "express",
+    "mongodb"
+  ],
+  "author": "Ashwani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aswintalk76/blogAppNodejs/issues"
+  },
+  "homepage": "https://github.com/aswintalk76/blogAppNodejs#readme"
+}
