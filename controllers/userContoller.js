@@ -45,10 +45,26 @@ exports.registerController = async (req, res) => {
 };
 // get all users
 exports.getAllUsers = async (req, res) => {
-  return res.status(200).send({
-    success: true,
-    message: "All User Data",
-  });
+  //   return res.status(200).send({
+  //     success: true,
+  //     message: "All User Data",
+  //   });
+  try {
+    const users = await userModel.find({});
+    return res.status(200).send({
+      userCount: users.length,
+      success: true,
+      message: "all users data",
+      users,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "Error In Get ALl Users",
+      error,
+    });
+  }
 };
 //login
 exports.loginController = async (req, res) => {
