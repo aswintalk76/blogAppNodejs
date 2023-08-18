@@ -6,6 +6,9 @@ const connectDB = require("./config/db");
 //env config
 dotenv.config();
 
+//router import
+const userRoutes = require("./routes/userRoutes");
+
 //mongodb connection
 connectDB();
 
@@ -17,6 +20,9 @@ const port = process.env.port || 5000;
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
+
+//routes
+app.use("/api/v1/user", userRoutes);
 
 //create a default route
 app.get("/", (req, res) => {
