@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/aswintalk76/blogAppNodejs#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
     "mongoose": "^7.4.3"
