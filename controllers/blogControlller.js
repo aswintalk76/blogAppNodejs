@@ -45,10 +45,31 @@ exports.createBlogController = async (req, res) => {
 
 //Update Blog
 exports.updateBlogController = async (req, res) => {
-  return res.status(200).send({
-    success: true,
-    message: "Blog Updated!",
-  });
+  // return res.status(200).send({
+  //   success: true,
+  //   message: "Blog Updated!",
+  // });
+  try {
+    const { id } = req.params;
+    const { title, description, image } = req.body;
+    const blog = await blogModel.findByIdAndUpdate(
+      id,
+      { ...req.body },
+      { new: true }
+    );
+    return res.status(200).send({
+      success: true,
+      message: "Blog Updated!",
+      blog,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({
+      success: false,
+      message: "Error WHile Updating Blog",
+      error,
+    });
+  }
 };
 
 //SIngle Blog
