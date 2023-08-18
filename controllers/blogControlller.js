@@ -104,10 +104,24 @@ exports.getBlogByIdController = async (req, res) => {
 
 //Delete Blog
 exports.deleteBlogController = async (req, res) => {
-  return res.status(200).send({
-    success: true,
-    message: "Blog Deleted!",
-  });
+  // return res.status(200).send({
+  //   success: true,
+  //   message: "Blog Deleted!",
+  // });
+  try {
+    const blog = await blogModel.findOneAndDelete(req.params.id);
+    return res.status(200).send({
+      success: true,
+      message: "Blog Deleted!",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({
+      success: false,
+      message: "Erorr WHile Deleteing BLog",
+      error,
+    });
+  }
 };
 
 //GET USER BLOG
