@@ -9,7 +9,9 @@ exports.getAllBlogsController = async (req, res) => {
   //   message: "All Blogs lists",
   // });
   try {
-    const blogs = await blogModel.find({});
+    // const blogs = await blogModel.find({});
+    const blogs = await blogModel.find({}).populate("user");
+
     if (!blogs) {
       return res.status(200).send({
         success: false,
@@ -131,7 +133,10 @@ exports.deleteBlogController = async (req, res) => {
   //   message: "Blog Deleted!",
   // });
   try {
-    const blog = await blogModel.findOneAndDelete(req.params.id);
+    // const blog = await blogModel.findOneAndDelete(req.params.id);
+    const blog = await blogModel.findByIdAndDelete(req.params.id).populate("user");;
+    await blog.user.blogs.pull(blog);
+    await blog.user.save();
     return res.status(200).send({
       success: true,
       message: "Blog Deleted!",
