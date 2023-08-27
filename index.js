@@ -11,6 +11,7 @@ dotenv.config();
 //router import
 const userRoutes = require("./routes/userRoutes");
 const blogRoutes = require("./routes/blogRoutes");
+const planRoutes = require("./routes/planRoutes");
 
 //mongodb connection
 connectDB();
@@ -27,6 +28,7 @@ app.use(morgan("dev"));
 //routes
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/blog", blogRoutes);
+app.use("/api/v1/plan", planRoutes);
 
 //create a default route
 app.get("/", (req, res) => {
