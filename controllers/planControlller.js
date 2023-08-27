@@ -3,8 +3,9 @@ const planModel = require("../models/planModel");
 
 //Create plan
 exports.createPlanController = async (req, res) => {
+
   try {
-    const { name, amount } = req.body;
+    const { name, amount} = req.body;
     //validation
     if (!name || !amount) {
       return res.status(400).send({
@@ -37,12 +38,14 @@ exports.updatePlanController = async (req, res) => {
   //   message: "Plan Updated!",
   // });
   try {
+    
+
     const { name, amount } = req.body;
     const planId = req.params.planId;
 
-    const plan = await planModel.update(
+    const plan = await planModel.findByIdAndUpdate(
       planId,
-      { amount: req.body.amount },
+      { ...req.body },
       { new: true }
     );
 
@@ -83,7 +86,9 @@ exports.deletePlanController = async (req, res) => {
 };
 
 //update plane status
-exports.statusPlanController = async (req, res) => {};
+exports.statusPlanController =async (req,res)=>{
+
+}
 
 //GET ALL plann
 exports.allPlanController = async (req, res) => {
@@ -114,3 +119,4 @@ exports.allPlanController = async (req, res) => {
     });
   }
 };
+
